@@ -2,7 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 function Navbar() {
   return (
-    <div className='sticky top-0 text-black min-h-full shadow-[0_4px_4px_rgba(0,0,0,0.25)]'>
+    <div className='bg-white sticky top-0 text-black min-h-full shadow-[0_4px_4px_rgba(0,0,0,0.25)]'>
       <div className='mx-8 grid grid-cols-2 gap-2'>
         <div className='flex py-8 items-center'>
           <div className='w-full flex gap-5'>

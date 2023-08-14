@@ -1,4 +1,14 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+    content: [
+        "./node_modules/flowbite-react/**/*.js",
+        "./pages/**/*.{ts,tsx}",
+        "./public/**/*.html",
+      ],
+      plugins: [
+        require("flowbite/plugin")
+      ],
+      theme: {},
+}
 
 module.exports = nextConfig
