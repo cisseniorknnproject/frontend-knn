@@ -8,6 +8,18 @@ const nextConfig = {
       plugins: [
         require("flowbite/plugin")
       ],
+      images:{
+        remotePatterns:[
+          {
+            protocol:'https',
+            hostname: 'images.unsplash.com'
+          },
+          {
+            protocol: 'https',
+            hostname: 'plus.unsplash.com'
+          }
+        ]
+      },
       theme: {},
 }
 

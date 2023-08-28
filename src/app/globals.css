@@ -12,3 +12,13 @@ body {
   background-color: rgb( var(--foreground-rgb)) ;
   font-family: 'Inter';
 }
+
+.ads_container {
+  display: grid;
+  grid-template-columns:3fr 1fr;
+  height: 13rem;
+}
+
+.boxsearch {
+  box-shadow: -4px -3px 10px rgba(0, 0, 0, 0.25) inset;
+}
