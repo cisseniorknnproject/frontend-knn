@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 255, 255, 255;
+  --foreground-rgb: #2F82FF;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 }
@@ -16,9 +16,16 @@ body {
 .ads_container {
   display: grid;
   grid-template-columns:3fr 1fr;
-  height: 13rem;
+  height: 30rem;
 }
 
 .boxsearch {
   box-shadow: -4px -3px 10px rgba(0, 0, 0, 0.25) inset;
+}
+
+.recom {
+  display: grid;
+  grid-template-columns: 200px 3fr;
+  background-color: #2F82FF;
+  gap: 5;
 }
