@@ -40,7 +40,10 @@ function recommendation() {
         {IsLoading ? <p>Loading...</p> : <Image objectFit='contain' className='rounded-xl px-2 mix-blend-multiply mt-1  w-full h-[150px]' src={val.images[0]} width={1000} height={1000} alt='...' />}
         <div className=' text-black p-4'>
             <p className='truncate text-[16px]'>{val.title}</p>
-            <p className='font-bold'>$ {val.price}</p>
+            <div className='flex flex-row items-center gap-2'>
+                <p className='font-bold line-through'>$ {val.price}</p>
+                <p className='font-bold text-red-500'> Now {(val.price - (val.price * (val.discountPercentage/100)).toFixed(0))}</p>
+            </div>
         </div>
     </div>
 </div>
