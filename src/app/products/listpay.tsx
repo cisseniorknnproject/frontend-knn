@@ -1,12 +1,13 @@
 "use client"
 import Link from 'next/link';
-import React from 'react'
-import ListItem from './components/ListItem'
-import Carousel from './components/carousel';
+import React, { useEffect } from 'react'
+import ListItem from '@/components/ListItem/ListItem'
+import Carousel from '@components/carousel/carousel';
+import Recommendation from '@/components/recommen/page';
 import Image from 'next/image';
-import Recommendation from './components/recommen/page';
 import Products from './products';
-
+import { Suspense } from 'react';
+import Loading from '../loading';
 
 function listpay() {
     const listStyle = [
@@ -25,6 +26,7 @@ function listpay() {
         { url: 'https://images.unsplash.com/photo-1646021780609-9c908307edc5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyM3x8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60'},
         { url: 'https://plus.unsplash.com/premium_photo-1682801939761-4a5b37c9370b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyNXx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60'},
     ]
+
   return (
       <div className='w-full max-w-full max-h-full flex flex-col gap-5'>
         <ListItem Ar={listStyle}/>
@@ -39,12 +41,16 @@ function listpay() {
             </div>
         </div>
         <div className='max-w-[120%] w-[100%] bg-[#2F82FF] h-[300px] rounded-xl flex'>
-            <Recommendation/>
+            <Suspense fallback={<Loading/>}>
+                <Recommendation/>
+            </Suspense>
         </div>
 
         <div className='flex flex-col w-full'>
             <p className='text-[28px] text-black w-full bg-[#F8F8F8] p-4'>รายการสินค้า</p>
-            <Products />
+            <Suspense fallback={<Loading/>}>
+                <Products />
+            </Suspense>
         </div>
     </div>
   )
