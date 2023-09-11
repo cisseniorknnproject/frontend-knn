@@ -61,7 +61,7 @@ const Productdetail: FC<pageProps> = ({ params }) => {
                             | any
                         ).showModal()
                       }
-                      className="snap-center  w-full h-[200px] m-3 cursor-pointer rounded-3xl drop-shadow-[0px_4px_4px_rgba(0,0,0,0.25)]"
+                      className="snap-center contrast-125 object-cover  w-full h-[200px] m-3 cursor-pointer rounded-3xl drop-shadow-[0px_4px_4px_rgba(0,0,0,0.25)]"
                       objectFit="cover"
                       key={idx}
                       src={val}
@@ -72,6 +72,7 @@ const Productdetail: FC<pageProps> = ({ params }) => {
                     <dialog id={`${idx}`} className="modal">
                       <div className="modal-box">
                         <Image
+                          className="contrast-125"
                           objectFit="contain"
                           src={val}
                           width={1000}
