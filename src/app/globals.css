@@ -29,3 +29,17 @@ body {
   background-color: #2F82FF;
   gap: 5;
 }
+
+@media screen and (max-width: 768px) {
+  .ads_container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* .recom {
+    display: grid;
+    grid-template-columns: 100px 3fr;
+    background-color: #2F82FF;
+    gap: 5;
+  } */
+}

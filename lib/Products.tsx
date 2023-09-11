@@ -1,15 +1,14 @@
 export const getProducts = async() => {
-    await new Promise((resolve, reject) => setTimeout(resolve, 3000))
-    const res = await fetch('https://dummyjson.com/products');
+    const res = await fetch('https://dummyjson.com/products', {next: {revalidate : 60}});
     const data = await res.json();
+    await new Promise((resolve, reject) => setTimeout(resolve, 1500))
     return data;
 }
 
 export const getOneProdcutse = async(id:number) => { 
-        await new Promise((resolve, reject) => setTimeout(resolve, 3000))
-        const res = await fetch(`https://dummyjson.com/products/${id}`);
-        const data = await res.json();
-        console.log('Heeeee')
+    const res = await fetch(`https://dummyjson.com/products/${id}`);
+    const data = await res.json();
+    await new Promise((resolve, reject) => setTimeout(resolve, 2000))
         return data;
 
 }

@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Navbar from '@/components/navbar/navbar'
 import { Suspense } from 'react'
-import Loading from './loading'
+import Loading from './load/loading'
 
 const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
