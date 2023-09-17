@@ -1,7 +1,6 @@
 import React, { Key, Suspense, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { AiFillStar } from "react-icons/ai";
 import { getProducts } from "../../../lib/Products";
 type Product = {
   id: Number;
@@ -40,9 +39,8 @@ async function Products() {
                 "
             >
               <Image
-                objectFit="cover"
                 className="mix-blend-multiply rounded-xl w-full h-[180px]"
-                src={val.images[0]}
+                src={val.thumbnail}
                 width={1000}
                 height={1000}
                 alt={val.title}

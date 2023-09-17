@@ -38,18 +38,17 @@ function listpay() {
   ];
 
   return (
-    <div className="h-full max-w-full flex flex-col gap-5">
+    <div className="h-full max-w-full flex flex-col gap-5 items-center">
       <ListItem Ar={listStyle} />
       <div
         className="
-           flex flex-col md:grid md:grid-cols-3 max-w-full w-full gap-2"
+           flex flex-col md:grid md:grid-cols-3 max-w-full w-10/12 gap-2"
       >
         <Carousel slide={slide} />
         <div className="max-w-full max-h-[400px] h-full w-full bg-white rounded-xl drop-shadow-[0px_4px_4px_rgba(0,0,0,0.25)]">
           <Link href={"/"}>
             <Image
               className="rounded-xl max-w-full w-full max-h-full h-full"
-              objectFit="cover"
               src="/test_prop.png"
               width={1000}
               height={1000}
@@ -58,7 +57,7 @@ function listpay() {
           </Link>
         </div>
       </div>
-      <div className="max-w-[120%] w-[100%] bg-[#2F82FF] h-[300px] rounded-xl flex">
+      <div className="max-w-full w-full md:max-w-full md:w-11/12 bg-[#2F82FF] h-[300px] rounded-xl flex justify-center">
         <Suspense fallback={<Loading />}>
           <Recommendation />
         </Suspense>

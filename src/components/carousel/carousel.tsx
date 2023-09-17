@@ -45,7 +45,7 @@ function carousel({ slide }: Params) {
       </div>
       <div className="absolute flex gap-3 justify-center bottom-[15px] w-full max-w-full  ">
         {slide.map((val: String, idx: number) => (
-          <>
+          <div key={idx}>
             <div
               key={idx}
               onClick={() => ToSlide(idx)}
@@ -57,7 +57,7 @@ function carousel({ slide }: Params) {
             >
               <FiCircle className={`text-[15px] rounded-full`}></FiCircle>
             </div>
-          </>
+          </div>
         ))}
       </div>
     </div>

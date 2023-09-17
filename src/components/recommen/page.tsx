@@ -8,7 +8,7 @@ export default async function recommendation() {
 
   return (
     <>
-      <div className="text-black md:max-w-full rounded-xl bg-[#2F82FF] md:max-h-full w-full flex flex-row flex-nowrap items-center ">
+      <div className="w-full flex flex-row flex-nowrap items-center text-black  rounded-xl bg-[#2F82FF] md:max-w-full  md:max-h-full">
         <div className="shadow-[2px_0px_5px_rgba(0,0,0,0.25)] p-10 w-full h-full flex items-center justify-center">
           <p className="-rotate-90 text-[24px] md:rotate-0 md:text-[34px] text-white font-bold">
             รายการสินค้าแนะนำ
@@ -20,7 +20,7 @@ export default async function recommendation() {
               val.price - val.price * (val.discountPercentage / 100);
             return (
               // eslint-disable-next-line react/jsx-key
-              <Link className="snap-center" href={`/product/${val.id}`}>
+              <Link key={idx} className="snap-center" href={`/product/${val.id}`}>
                 <div
                   key={idx}
                   className={`m-3 flex justify-center ease duration-200 hover:bg-[#c1c1c1] cursor-pointer w-[200px] bg-white rounded-xl drop-shadow-[0px_4px_4px_rgba(0,0,0,0.25)]`}
@@ -28,12 +28,12 @@ export default async function recommendation() {
                   <div className="card w-[180px]">
                     {
                       <Image
-                        objectFit="contain"
                         className="rounded-xl px-2 mix-blend-multiply mt-1  w-full h-[150px]"
                         src={val.images[0]}
                         width={1000}
                         height={1000}
                         alt="..."
+                        quality={100}
                       />
                     }
                     <div className=" text-black p-4">
