@@ -12,8 +12,7 @@ const product = async ({params} : any | String) => {
       <p className="text-[36px] text-white font-extrabold">{`สินค้า ${product?.title}`}</p>
       <div className="max-w-screen max-h-screen w-full h-[90rem] bg-white rounded-xl flex flex-col">      
           <Heroes Product= {product}/>
-
-        
+      
       </div>
     </div>
     );
