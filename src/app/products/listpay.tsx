@@ -11,7 +11,7 @@ import Loading from "../load/loading";
 
 function listpay() {
   const listStyle = [
-    { name: "Keyboard" },
+    { name: "Keyboard " },
     { name: "Keyboard 60%" },
     { name: "Keyboard 65%" },
     { name: "Keyboard 75%" },
