@@ -1,6 +1,6 @@
 import React, { FC, Key, Suspense, useEffect, useState } from "react";
 import Heroes from "./heroes";
-import { getOneProdcutse } from "../../../../../lib/Products";
+import { getOneProdcutse } from "../../../api/products/route";
 
 
 const product = async ({params} : any | String) => {
