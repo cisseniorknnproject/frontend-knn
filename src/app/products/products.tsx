@@ -1,21 +1,32 @@
+"use client"
 import React, { Key, Suspense, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { getProducts } from "../../../lib/Products";
+import { getProducts } from "../api/products/route";
 type Product = {
   id: Number;
   title: string;
   price: number;
   image: [];
 };
-async function Products() {
-    const {products} = await getProducts();
+function Products() {
+  const [products, SetProducts] = useState<Product | any>();
+  useEffect(() => {
+
+    const fetchData = async () => {
+      const {products} = await getProducts();
+      SetProducts(products)
+    }
+
+    fetchData();
+  }, [])
+    
 
   return (
     <div 
     className="grid grid-cols-2 w-full flex-wrap gap-1 p-1 justify-center
                 md:grid-cols-5 md:w-6/12 md:gap-5">
-      {products.map((val: any, idx: Key) => {
+      {products?.map((val: any, idx: Key) => {
         
         return (
           <Link

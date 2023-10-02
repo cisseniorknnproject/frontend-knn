@@ -1,7 +1,7 @@
 import React, { Key, Suspense } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { getProducts } from "../../../lib/Products";
+import { getProducts } from "../../app/api/products/route";
 
 export default async function recommendation() {
   const { products } = await getProducts();
@@ -15,7 +15,7 @@ export default async function recommendation() {
           </p>
         </div>
         <div className="flex scroll-smooth snap-x overflow-x-scroll gap-5 items-center">
-          {products.map((val: any, idx: Key) => {
+          {products?.map((val: any, idx: Key) => {
             const discount =
               val.price - val.price * (val.discountPercentage / 100);
             return (
