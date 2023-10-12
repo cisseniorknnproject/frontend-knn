@@ -3,6 +3,7 @@ import React, { Key, Suspense, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { getProducts } from "../api/products/route";
+
 type Product = {
   id: Number;
   title: string;
@@ -14,6 +15,7 @@ function Products() {
   useEffect(() => {
 
     const fetchData = async () => {
+      await new Promise((resolve, rejects) => setTimeout(resolve, 1500))
       const {products} = await getProducts();
       SetProducts(products)
     }

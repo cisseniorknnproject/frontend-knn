@@ -1,10 +1,26 @@
-import React, { Key, Suspense } from "react";
+"use client"
+import React, { Key, useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { getProducts } from "../../app/api/products/route";
+type Product ={ 
+  id: string,
+  price :number,
+  discount :number,
+  discountPercentage :number,
 
-export default async function recommendation() {
-  const { products } = await getProducts();
+}
+function Recommendation() {
+  const [products, SetProducts] = useState<any>();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const { products } = await getProducts();
+      SetProducts(products);
+    }
+    fetchData();
+  }, []);
+
 
   return (
     <>
@@ -56,3 +72,5 @@ export default async function recommendation() {
     </>
   );
 }
+
+export default Recommendation;

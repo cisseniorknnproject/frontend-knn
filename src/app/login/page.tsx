@@ -1,20 +1,26 @@
 "use client"
+import { signIn } from 'next-auth/react';
 import Link from 'next/link'
 import React, { useState } from 'react'
 import { FiEye, FiEyeOff } from 'react-icons/fi';
+import { useRouter } from 'next/navigation';
+
 function LoginForm() {
+  const router = useRouter();
   const [ShowPassword, SetShowPassword] = useState<boolean>(true);
-  const [formData, setFormData] = useState({email:"", password: ""}); 
-  const handlerForm = (e: React.ChangeEvent<HTMLInputElement>) => 
-  {
+  const [formData, setFormData] = useState({ email: "", password: "" });
+  const handlerForm = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
-    setFormData({...formData, [e.target.name]: value});
+    setFormData({ ...formData, [e.target.name]: value });
 
   }
-const formSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
-  e.preventDefault();
-  console.log(JSON.stringify(formData));
-}
+  const formSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    signIn('credentials', {
+      ...formData, redirect: false
+    });
+    router.push('/')
+  }
   return (
     <>
       <dialog id="modal_formLogin" className="modal modal-bottom sm:modal-middle">
@@ -30,7 +36,7 @@ const formSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
               <p className="font-black text-3xl text-black">Sign in to your account</p>
             </div>
 
-            <form  className='max-w-full w-10/12 h-full flex flex-col gap-5'>
+            <form className='max-w-full w-10/12 h-full flex flex-col gap-5'>
               <div className='max-w-full flex flex-col w-full gap-2'>
                 <label htmlFor="email" className='font-semibold block leading-3'>Email address</label>
                 <input onChange={(e) => handlerForm(e)} placeholder='Email' type="email" name="email" className='block pl-4 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6' />
@@ -40,12 +46,11 @@ const formSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
                 <div className='relative'>
                   <input autoComplete='on' onChange={(e) => handlerForm(e)} placeholder='Password' type={ShowPassword ? 'password' : 'text'} name="password" className='block pl-4 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6' />
                   <div onClick={() => { SetShowPassword(!ShowPassword) }} className='absolute flex items-center inset-y-0 right-0 pr-2 cursor-pointer'>
-                  {ShowPassword ? <FiEyeOff/> : <FiEye/>}
+                    {ShowPassword ? <FiEyeOff /> : <FiEye />}
                   </div>
                 </div>
               </div>
               <button onClick={formSubmit} className='ease-in duration-100 hover:bg-blue-500 w-full bg-blue-700 rounded-md py-2 text-white font-bold inset-2'>Sign in</button>
-              <p className='w-full text-center font-bold text-gray-600 h-auto'>Not a member? <Link href={''} className=' text-blue-700 indent-5 underline underline-offset-2'>Sign up</Link></p>
             </form>
           </div>
         </div>

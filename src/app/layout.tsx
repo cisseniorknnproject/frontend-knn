@@ -1,27 +1,23 @@
 import './globals.css'
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Montserrat, Kanit } from 'next/font/google'
 import Navbar from '@/components/navbar/navbar'
-import { Suspense } from 'react'
-import Loading from './load/loading'
+import Provider from './context/provider'
+const montserrat = Montserrat({ subsets: ["latin"] })
+const kanit = Kanit({
+  subsets: ['latin'],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900']
+})
 
-const inter = Inter({ subsets: ['latin'] })
-export const metadata: Metadata = {
-  title:'NPP-SHOP',
-  description:'MainPage',
-  icons: [
-    {rel: 'icon', url: '/favicon-32x32.png'}
-  ]
-}
-
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
 
   return (
-    <html lang="en">
-      <body suppressHydrationWarning={true} className={inter.className}>
-            <Navbar />
-            {children}
-            </body>
+    <html lang="en" >
+        <Provider>
+      <body suppressHydrationWarning={true} className={`${montserrat.className}, ${kanit.className}`}>
+          <Navbar />
+          {children}
+      </body>
+        </Provider>
     </html>
   )
 }
